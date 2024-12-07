@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "org.cvhmem.japaneseime"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "org.cvhmem.japaneseime"
