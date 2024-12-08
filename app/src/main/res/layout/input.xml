@@ -25,8 +25,6 @@
         android:id="@+id/button_a"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="あ"
@@ -34,14 +32,15 @@
         app:labelLeft="い"
         app:labelRight="え"
         app:labelUp="う"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_k"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="か"
@@ -49,14 +48,15 @@
         app:labelLeft="き"
         app:labelRight="け"
         app:labelUp="く"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_s"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="さ"
@@ -64,14 +64,15 @@
         app:labelLeft="し"
         app:labelRight="せ"
         app:labelUp="す"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_3"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_t"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="た"
@@ -79,14 +80,15 @@
         app:labelLeft="ち"
         app:labelRight="て"
         app:labelUp="つ"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_1"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_n"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="な"
@@ -94,14 +96,15 @@
         app:labelLeft="に"
         app:labelRight="ね"
         app:labelUp="ぬ"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_1"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_h"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="は"
@@ -109,14 +112,15 @@
         app:labelLeft="ひ"
         app:labelRight="へ"
         app:labelUp="ふ"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_1"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_3"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_m"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="ま"
@@ -124,27 +128,29 @@
         app:labelLeft="み"
         app:labelRight="め"
         app:labelUp="む"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_2"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_y"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="や"
         app:labelDown="よ"
         app:labelUp="ゆ"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_2"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_r"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="ら"
@@ -152,14 +158,15 @@
         app:labelLeft="り"
         app:labelRight="れ"
         app:labelUp="る"
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_2"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_3"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_w"
         android:layout_width="77dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-38.5dp"
-        android:layout_marginTop="-38.5dp"
         app:centerTextSize="16dp"
         app:directionalTextSize="8dp"
         app:labelCenter="わ"
@@ -167,78 +174,70 @@
         app:labelLeft="ゐ"
         app:labelRight="ゑ"
         app:labelUp=""
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_3" />
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+
     <Button
         android:id="@+id/button_delete"
         android:layout_width="60dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-30dp"
-        android:layout_marginTop="-38.5dp"
         android:text="x"
-        app:layout_constraintEnd_toStartOf="@+id/v_guideline_4"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+        app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_3"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/button_confirm"
         android:layout_width="60dp"
         android:layout_height="77dp"
-        android:layout_marginEnd="-30dp"
-        android:layout_marginTop="-38.5dp"
         android:text="y"
-        app:layout_constraintEnd_toStartOf="@+id/v_guideline_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_3"
         app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_guideline_0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".1666" />
+        app:layout_constraintGuide_percent=".2" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_guideline_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".3333" />
+        app:layout_constraintGuide_percent=".4" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_guideline_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
+        app:layout_constraintGuide_percent=".6" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_guideline_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".6666" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v_guideline_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".8333" />
+        app:layout_constraintGuide_percent=".8" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h_guideline_0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".2" />
+        app:layout_constraintGuide_percent=".25" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h_guideline_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".4" />
+        app:layout_constraintGuide_percent=".5" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/h_guideline_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".6" />
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/h_guideline_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".8" />
+        app:layout_constraintGuide_percent=".75" />
 </androidx.constraintlayout.widget.ConstraintLayout>

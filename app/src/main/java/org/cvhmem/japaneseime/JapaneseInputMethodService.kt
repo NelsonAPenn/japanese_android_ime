@@ -27,16 +27,23 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
              * New characters are always appended to the end of the composing text.
              * Characters are always deleted from before the composing text
              */
-            findViewById<DirectionalKey>(R.id.button_a).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_k).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_s).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_t).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_n).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_h).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_m).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_y).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_r).onInput = {value -> onInput(value)};
-            findViewById<DirectionalKey>(R.id.button_w).onInput = {value -> onInput(value)};
+            val lambda = {value: String -> onInput(value)};
+            val directionalKeyIds = arrayOf(
+                R.id.button_a,
+                R.id.button_k,
+                R.id.button_s,
+                R.id.button_t,
+                R.id.button_n,
+                R.id.button_h,
+                R.id.button_m,
+                R.id.button_y,
+                R.id.button_r,
+                R.id.button_w,
+            )
+            for (id in directionalKeyIds)
+            {
+                findViewById<DirectionalKey>(id).onInput = lambda;
+            }
             findViewById<Button>(R.id.button_confirm).setOnClickListener {
                 currentInputConnection.commitText(composingText, 1)
                 composingText.clear()

@@ -131,8 +131,8 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
             directionLabels[label]?.let {
                 canvas.drawText(
                     it,
-                    paddingLeft + (contentWidth) / 2f + directionVectors[label].first * contentWidth * .27F,
-                    paddingTop + (contentHeight + directionalTextHeight) / 2f + directionVectors[label].second * contentWidth * .27F,
+                    paddingLeft + (contentWidth) / 2f + directionVectors[label].first * contentWidth * .22F,
+                    paddingTop + (contentHeight + directionalTextHeight) / 2f + directionVectors[label].second * contentWidth * .22F,
                     directionalTextPaint
                 )
             }
@@ -154,9 +154,13 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         when (event?.action)
         {
             MotionEvent.ACTION_DOWN -> {
-                println("Down")
+                // motion coordinates are relative to top left corner of view
+                val cx = width / 2f
+                val cy = height / 2f
 
-
+                val dx = event.x - cx
+                val dy = event.y - cy
+                return (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.1).pow(2)
             }
             MotionEvent.ACTION_UP -> {
                 // motion coordinates are relative to top left corner of view
@@ -165,7 +169,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
                 val dx = event.x - cx
                 val dy = event.y - cy
-                if ((dx.pow(2) + dy.pow(2)) >= (centerTextSize * 1.6).pow(2))
+                if ((dx.pow(2) + dy.pow(2)) >= (centerTextSize * 1.1).pow(2))
                 {
                     if (dy.absoluteValue > dx.absoluteValue) {
                         val label = directionLabels[if (dy < 0) InputDirection.UP.ordinal else InputDirection.DOWN.ordinal]
