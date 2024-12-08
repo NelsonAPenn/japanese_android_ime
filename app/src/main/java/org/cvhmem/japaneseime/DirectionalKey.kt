@@ -9,6 +9,8 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import kotlin.math.absoluteValue
+import kotlin.math.pow
 
 enum class InputDirection
 {
@@ -149,8 +151,44 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        onInput(directionLabels[0] ?: "")
-        performClick()
-        return super.onTouchEvent(event)
+        when (event?.action)
+        {
+            MotionEvent.ACTION_DOWN -> {
+                println("Down")
+
+
+            }
+            MotionEvent.ACTION_UP -> {
+                // motion coordinates are relative to top left corner of view
+                val cx = width / 2f
+                val cy = height / 2f
+
+                val dx = event.x - cx
+                val dy = event.y - cy
+                if ((dx.pow(2) + dy.pow(2)) >= (centerTextSize * 1.6).pow(2))
+                {
+                    if (dy.absoluteValue > dx.absoluteValue) {
+                        val label = directionLabels[if (dy < 0) InputDirection.UP.ordinal else InputDirection.DOWN.ordinal]
+                        if (label != null)
+                        {
+                            onInput(label)
+                        }
+                    }
+                    else {
+                        val label = directionLabels[if (dx < 0) InputDirection.LEFT.ordinal else InputDirection.RIGHT.ordinal]
+                        if (label != null)
+                        {
+                            onInput(label)
+                        }
+                    }
+                }
+                else {
+                    directionLabels[InputDirection.NONE.ordinal]?.apply(onInput)
+                }
+
+            }
+        }
+        // TODO: return true if in actionable zone
+        return true
     }
 }

@@ -23,7 +23,8 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
              * Characters are always deleted from before the composing text
              */
             findViewById<DirectionalKey>(R.id.button_a).onInput = {
-                composingText.append("あ")
+                value ->
+                composingText.append(value)
                 currentInputConnection.setComposingText(composingText, 1)
             };
             findViewById<Button>(R.id.button_confirm).setOnClickListener {
