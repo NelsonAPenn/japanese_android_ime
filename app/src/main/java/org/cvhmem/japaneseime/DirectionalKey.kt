@@ -8,7 +8,6 @@ import android.graphics.drawable.Drawable
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
-import androidx.annotation.Dimension
 
 enum class InputDirection
 {
@@ -25,14 +24,25 @@ enum class InputDirection
  */
 class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
-    private lateinit var textPaint: TextPaint
+    private lateinit var centerTextPaint: TextPaint
+    private lateinit var directionalTextPaint: TextPaint
     private var textWidth: Float = 0f
-    private var textHeight: Float = 0f
+    private var centerTextHeight: Float = 0f
+    private var directionalTextHeight: Float = 0f
 
     private val directionLabels: Array<String?> = arrayOfNulls(5)
+    private val directionVectors: Array<Pair<Int, Int>> = arrayOf(
+        Pair(0, 0),
+        Pair(0, -1),
+        Pair(0, 1),
+        Pair(-1, 0),
+        Pair(1, 0),
+    )
     private var centerTextSize: Float = 100F
     private var directionalTextSize: Float = 50F
     var exampleDrawable: Drawable? = null
+    var onInput: (String) -> Unit = {}
+
 
     init {
         init(attrs, 0)
@@ -63,9 +73,15 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         a.recycle()
 
         // Set up a default TextPaint object
-        textPaint = TextPaint().apply {
+        centerTextPaint = TextPaint().apply {
             flags = Paint.ANTI_ALIAS_FLAG
-            textAlign = Paint.Align.LEFT
+            textAlign = Paint.Align.CENTER
+            color = Color.WHITE
+        }
+        directionalTextPaint = TextPaint().apply {
+            flags = Paint.ANTI_ALIAS_FLAG
+            textAlign = Paint.Align.CENTER
+            color = Color.LTGRAY
         }
 
         // Update TextPaint and text measurements from attributes
@@ -73,11 +89,15 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
     }
 
     private fun invalidateTextPaintAndMeasurements() {
-        textPaint.let {
+        centerTextPaint.let {
             it.textSize = centerTextSize
-            it.color = Color.RED
             textWidth = it.measureText(directionLabels[0] ?: "")
-            textHeight = it.fontMetrics.bottom
+            centerTextHeight = it.fontMetrics.bottom
+        }
+        directionalTextPaint.let {
+            it.textSize = directionalTextSize
+            textWidth = it.measureText(directionLabels[0] ?: "")
+            directionalTextHeight = it.fontMetrics.bottom
         }
     }
 
@@ -98,10 +118,22 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
             // Draw the text.
             canvas.drawText(
                 it,
-                paddingLeft + (contentWidth - textWidth) / 2,
-                paddingTop + (contentHeight + textHeight) / 2,
-                textPaint
+                paddingLeft + (contentWidth) / 2f,
+                paddingTop + (contentHeight) / 2f,
+                centerTextPaint
             )
+        }
+        for (label in 1..4)
+        {
+            directionLabels[label]?.let {
+                canvas.drawText(
+                    it,
+                    paddingLeft + (contentWidth) / 2f + directionVectors[label].first * contentWidth * .25F,
+                    paddingTop + (contentWidth) / 2f + directionVectors[label].second * contentWidth * .25F,
+                    directionalTextPaint
+                )
+            }
+
         }
 
         // Draw the example drawable on top of the text.

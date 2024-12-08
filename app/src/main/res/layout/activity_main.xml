@@ -15,15 +15,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <org.cvhmem.japaneseime.DirectionalKey
-        android:layout_width="60dp"
-        android:layout_height="77dp"
+        android:layout_width="148dp"
+        android:layout_height="147dp"
         android:layout_marginStart="184dp"
         android:layout_marginTop="184dp"
+        app:centerTextSize="40dp"
+        app:directionalTextSize="25dp"
         app:labelCenter="あ"
-        app:labelDown="o"
-        app:labelLeft="i"
-        app:labelRight="e"
-        app:labelUp="u"
+        app:labelDown="お"
+        app:labelLeft="い"
+        app:labelRight="え"
+        app:labelUp="う"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
