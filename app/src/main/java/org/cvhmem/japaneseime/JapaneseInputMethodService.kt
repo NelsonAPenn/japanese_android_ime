@@ -15,6 +15,11 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
         anchorInfo = cursorAnchorInfo;
     }
 
+    private fun onInput(value: String) {
+        composingText.append(value)
+        currentInputConnection.setComposingText(composingText, 1)
+    }
+
     override fun onCreateInputView(): View {
         return layoutInflater.inflate(R.layout.input, null).apply {
             /*
@@ -22,11 +27,16 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
              * New characters are always appended to the end of the composing text.
              * Characters are always deleted from before the composing text
              */
-            findViewById<DirectionalKey>(R.id.button_a).onInput = {
-                value ->
-                composingText.append(value)
-                currentInputConnection.setComposingText(composingText, 1)
-            };
+            findViewById<DirectionalKey>(R.id.button_a).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_k).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_s).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_t).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_n).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_h).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_m).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_y).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_r).onInput = {value -> onInput(value)};
+            findViewById<DirectionalKey>(R.id.button_w).onInput = {value -> onInput(value)};
             findViewById<Button>(R.id.button_confirm).setOnClickListener {
                 currentInputConnection.commitText(composingText, 1)
                 composingText.clear()
