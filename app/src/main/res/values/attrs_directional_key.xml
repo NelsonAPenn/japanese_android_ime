@@ -5,9 +5,9 @@
         <attr name="labelDown" format="string" />
         <attr name="labelLeft" format="string" />
         <attr name="labelRight" format="string" />
+        <attr name="centerTextSize" format="dimension" />
+        <attr name="directionalTextSize" format="dimension" />
 
-        <attr name="exampleString" format="string" />
-        <attr name="exampleDimension" format="dimension" />
         <attr name="exampleColor" format="color" />
         <attr name="exampleDrawable" format="color|reference" />
     </declare-styleable>

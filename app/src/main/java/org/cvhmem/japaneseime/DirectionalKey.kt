@@ -30,6 +30,8 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
     private var textHeight: Float = 0f
 
     private val directionLabels: Array<String?> = arrayOfNulls(5)
+    private var centerTextSize: Float = 100F
+    private var directionalTextSize: Float = 50F
     var exampleDrawable: Drawable? = null
 
     init {
@@ -47,6 +49,9 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         directionLabels[InputDirection.DOWN.ordinal] = a.getString(R.styleable.DirectionalKey_labelDown)
         directionLabels[InputDirection.LEFT.ordinal] = a.getString(R.styleable.DirectionalKey_labelLeft)
         directionLabels[InputDirection.RIGHT.ordinal] = a.getString(R.styleable.DirectionalKey_labelRight)
+
+        centerTextSize = a.getDimension(R.styleable.DirectionalKey_centerTextSize, centerTextSize)
+        directionalTextSize = a.getDimension(R.styleable.DirectionalKey_directionalTextSize, centerTextSize)
 
         if (a.hasValue(R.styleable.DirectionalKey_exampleDrawable)) {
             exampleDrawable = a.getDrawable(
@@ -69,9 +74,9 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
     private fun invalidateTextPaintAndMeasurements() {
         textPaint.let {
-            it.textSize = 100.0F
+            it.textSize = centerTextSize
             it.color = Color.RED
-            textWidth = it.measureText("a")
+            textWidth = it.measureText(directionLabels[0] ?: "")
             textHeight = it.fontMetrics.bottom
         }
     }
