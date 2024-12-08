@@ -5,22 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--
-    <org.cvhmem.japaneseime.DirectionalKey
-        android:layout_width="60dp"
-        android:layout_height="77dp"
-        android:layout_marginEnd="-30dp"
-        android:layout_marginTop="-38.5dp"
-        app:layout_constraintEnd_toStartOf="@+id/v_guideline_0"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0"
-        app:labelCenter="あ"
-        app:labelUp="u"
-        app:labelDown="o"
-        app:labelLeft="i"
-        app:labelRight="e"
-        >
-    </org.cvhmem.japaneseime.DirectionalKey>-->
-
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_a"
         android:layout_width="77dp"
@@ -173,7 +157,7 @@
         app:labelDown="を"
         app:labelLeft="ゐ"
         app:labelRight="ゑ"
-        app:labelUp=""
+        app:labelUp="ん"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
