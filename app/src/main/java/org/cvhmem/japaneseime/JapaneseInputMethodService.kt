@@ -22,7 +22,7 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
              * New characters are always appended to the end of the composing text.
              * Characters are always deleted from before the composing text
              */
-            findViewById<Button>(R.id.button_a).setOnClickListener{
+            findViewById<DirectionalKey>(R.id.button_a).onInput = {
                 composingText.append("あ")
                 currentInputConnection.setComposingText(composingText, 1)
             };

@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 
 enum class InputDirection
@@ -81,7 +82,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         directionalTextPaint = TextPaint().apply {
             flags = Paint.ANTI_ALIAS_FLAG
             textAlign = Paint.Align.CENTER
-            color = Color.LTGRAY
+            color = Color.GRAY
         }
 
         // Update TextPaint and text measurements from attributes
@@ -119,7 +120,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
             canvas.drawText(
                 it,
                 paddingLeft + (contentWidth) / 2f,
-                paddingTop + (contentHeight) / 2f,
+                paddingTop + (contentHeight + centerTextHeight) / 2f,
                 centerTextPaint
             )
         }
@@ -128,8 +129,8 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
             directionLabels[label]?.let {
                 canvas.drawText(
                     it,
-                    paddingLeft + (contentWidth) / 2f + directionVectors[label].first * contentWidth * .25F,
-                    paddingTop + (contentWidth) / 2f + directionVectors[label].second * contentWidth * .25F,
+                    paddingLeft + (contentWidth) / 2f + directionVectors[label].first * contentWidth * .27F,
+                    paddingTop + (contentHeight + directionalTextHeight) / 2f + directionVectors[label].second * contentWidth * .27F,
                     directionalTextPaint
                 )
             }
@@ -144,5 +145,12 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
             )
             it.draw(canvas)
         }
+    }
+
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        onInput(directionLabels[0] ?: "")
+        performClick()
+        return super.onTouchEvent(event)
     }
 }
