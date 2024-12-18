@@ -50,13 +50,9 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
 
     init {
-        init(attrs, 0)
-    }
-
-    private fun init(attrs: AttributeSet?, defStyle: Int) {
         // Load attributes
         val a = context.obtainStyledAttributes(
-            attrs, R.styleable.DirectionalKey, defStyle, 0
+            attrs, R.styleable.DirectionalKey, 0, 0
         )
 
         directionLabels[InputDirection.NONE.ordinal] = a.getString(R.styleable.DirectionalKey_labelCenter)
@@ -159,7 +155,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         val dx = event.x - cx
         val dy = event.y - cy
 
-        val withinActiveZone = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.1).pow(2)
+        val withinActiveZone = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.4).pow(2)
 
         if (withinActiveZone)
         {
@@ -191,7 +187,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
                 val dx = event.x - cx
                 val dy = event.y - cy
-                val willHandlePress = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.1).pow(2)
+                val willHandlePress = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.3).pow(2)
                 if (willHandlePress){
                     unconfirmedInputDirection = InputDirection.NONE
                     performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -204,7 +200,10 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
                 val label = directionLabels[inputDirection.ordinal]
                 if (label != null)
                 {
-                    // Release isn't that helpful
+                    /*
+                     * In testing, haptic feedback on release has been more annoying than helpful
+                     * AOSP keyboard doesn't seem to do it either.
+                     */
                     //performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY_RELEASE);
                     onInput(label)
                 }
@@ -212,7 +211,6 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
             MotionEvent.ACTION_MOVE -> {
                 val inputDirection = getInputDirection(event)
                 if (unconfirmedInputDirection != InputDirection.NONE && inputDirection == InputDirection.NONE){
-                    unconfirmedInputDirection = inputDirection
                     performHapticFeedback(HapticFeedbackConstants.GESTURE_THRESHOLD_DEACTIVATE)
                 }
                 else if(inputDirection != unconfirmedInputDirection)
