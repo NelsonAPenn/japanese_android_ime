@@ -196,6 +196,21 @@
         app:layout_constraintEnd_toEndOf="@+id/v_guideline_1"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
         app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+    <org.cvhmem.japaneseime.DirectionalKey
+        android:id="@+id/button_punctuation"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        app:centerTextSize="16dp"
+        app:directionalTextSize="8dp"
+        app:labelCenter="、"
+        app:labelUp="？"
+        app:labelRight="！"
+        app:labelLeft="。"
+        app:labelDown="…"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/v_guideline_3"
+        app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_guideline_0"
         android:layout_width="wrap_content"

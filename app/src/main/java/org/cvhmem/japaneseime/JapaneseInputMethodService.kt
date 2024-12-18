@@ -124,6 +124,7 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
                 R.id.button_y,
                 R.id.button_r,
                 R.id.button_w,
+                R.id.button_punctuation,
             )
             for (id in directionalKeyIds)
             {
