@@ -9,6 +9,7 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
 {
     private val composingText: StringBuilder = StringBuilder();
     private var anchorInfo: CursorAnchorInfo? = null;
+    private val kanaConverter = KanaConverter()
 
     override fun onUpdateCursorAnchorInfo(cursorAnchorInfo: CursorAnchorInfo?) {
         // TODO: never hit
@@ -19,6 +20,90 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
         composingText.append(value)
         currentInputConnection.setComposingText(composingText, 1)
     }
+
+    private fun tryModifyLastCharacter(convert: (Char) -> Char?)
+    {
+        if (composingText.isNotEmpty())
+        {
+            val old = composingText[composingText.length - 1];
+            val newChar = convert(old);
+            if (newChar != null)
+            {
+                composingText[composingText.length - 1] = newChar;
+            }
+            currentInputConnection.setComposingText(composingText, 1)
+        }
+    }
+
+    private fun tryAddTen()
+    {
+        tryModifyLastCharacter { old: Char ->
+            val res = kanaConverter.lookUp(old);
+            if (res == null) { null }
+            else {
+                val (kanaClass, variant) = res;
+                if (variant == Variant.Ten)
+                {
+                    kanaClass.getChar(Variant.Normal)
+                }
+                else {
+                    kanaClass.getChar(Variant.Ten)
+                }
+            }
+        }
+    }
+    private fun tryAddMaru()
+    {
+        tryModifyLastCharacter { old: Char ->
+            val res = kanaConverter.lookUp(old);
+            if (res == null) { null }
+            else {
+                val (kanaClass, variant) = res;
+                if (variant == Variant.Maru)
+                {
+                    kanaClass.getChar(Variant.Normal)
+                }
+                else {
+                    kanaClass.getChar(Variant.Maru)
+                }
+            }
+        }
+    }
+    private fun tryConvertZen()
+    {
+        tryModifyLastCharacter { old: Char ->
+            val res = kanaConverter.lookUp(old);
+            if (res == null) { null }
+            else {
+                val (kanaClass, variant) = res;
+                if (variant == Variant.Small)
+                {
+                    kanaClass.getChar(Variant.Normal)
+                }
+                else {
+                    null
+                }
+            }
+        }
+    }
+    private fun tryConvertHan()
+    {
+        tryModifyLastCharacter { old: Char ->
+            val res = kanaConverter.lookUp(old);
+            if (res == null) { null }
+            else {
+                val (kanaClass, variant) = res;
+                if (variant == Variant.Normal)
+                {
+                    kanaClass.getChar(Variant.Small)
+                }
+                else {
+                    null
+                }
+            }
+        }
+    }
+
 
     override fun onCreateInputView(): View {
         return layoutInflater.inflate(R.layout.input, null).apply {
@@ -44,6 +129,24 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
             {
                 findViewById<DirectionalKey>(id).onInput = lambda;
             }
+            findViewById<DirectionalKey>(R.id.button_hanzen).onInput = {
+                value: String ->
+                when(value) {
+                    "◌゙" -> {
+                        tryAddTen()
+                    }
+                    "◌゚" -> {
+                        tryAddMaru()
+                    }
+                    "半" -> {
+                        tryConvertHan()
+                    }
+                    "全" -> {
+                        tryConvertZen()
+                    }
+                }
+
+            };
             findViewById<Button>(R.id.button_confirm).setOnClickListener {
                 currentInputConnection.commitText(composingText, 1)
                 composingText.clear()
