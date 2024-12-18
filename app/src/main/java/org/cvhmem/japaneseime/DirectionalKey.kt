@@ -23,6 +23,8 @@ enum class InputDirection
 }
 
 
+private const val ACTIVE_ZONE_MULTIPLIER = 1.5;
+
 /**
  * TODO: document your custom view class.
  */
@@ -155,7 +157,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         val dx = event.x - cx
         val dy = event.y - cy
 
-        val withinActiveZone = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.4).pow(2)
+        val withinActiveZone = (dx.pow(2) + dy.pow(2)) < (centerTextSize * ACTIVE_ZONE_MULTIPLIER).pow(2)
 
         if (withinActiveZone)
         {
@@ -187,7 +189,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
                 val dx = event.x - cx
                 val dy = event.y - cy
-                val willHandlePress = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.3).pow(2)
+                val willHandlePress = (dx.pow(2) + dy.pow(2)) < (centerTextSize * ACTIVE_ZONE_MULTIPLIER).pow(2)
                 if (willHandlePress){
                     unconfirmedInputDirection = InputDirection.NONE
                     performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
