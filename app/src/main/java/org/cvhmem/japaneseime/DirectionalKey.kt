@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.text.TextPaint
 import android.util.AttributeSet
+import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
 import kotlin.math.absoluteValue
@@ -45,6 +46,7 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
     private var directionalTextSize: Float = 50F
     var exampleDrawable: Drawable? = null
     var onInput: (String) -> Unit = {}
+    var unconfirmedInputDirection: InputDirection = InputDirection.NONE;
 
 
     init {
@@ -149,6 +151,35 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         }
     }
 
+    private fun getInputDirection(event: MotionEvent): InputDirection
+    {
+        val cx = width / 2f
+        val cy = height / 2f
+
+        val dx = event.x - cx
+        val dy = event.y - cy
+
+        val withinActiveZone = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.1).pow(2)
+
+        if (withinActiveZone)
+        {
+            return InputDirection.NONE
+        }
+        if (dy.absoluteValue > dx.absoluteValue)
+        {
+            if (dy < 0)
+            {
+                return InputDirection.UP
+            }
+            return InputDirection.DOWN
+        }
+
+        if (dx < 0)
+        {
+            return InputDirection.LEFT
+        }
+        return InputDirection.RIGHT
+    }
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         when (event?.action)
@@ -160,36 +191,35 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
                 val dx = event.x - cx
                 val dy = event.y - cy
-                return (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.1).pow(2)
+                val willHandlePress = (dx.pow(2) + dy.pow(2)) < (centerTextSize * 1.1).pow(2)
+                if (willHandlePress){
+                    unconfirmedInputDirection = InputDirection.NONE
+                    performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                }
+                return willHandlePress;
             }
             MotionEvent.ACTION_UP -> {
                 // motion coordinates are relative to top left corner of view
-                val cx = width / 2f
-                val cy = height / 2f
-
-                val dx = event.x - cx
-                val dy = event.y - cy
-                if ((dx.pow(2) + dy.pow(2)) >= (centerTextSize * 1.1).pow(2))
+                val inputDirection = getInputDirection(event)
+                val label = directionLabels[inputDirection.ordinal]
+                if (label != null)
                 {
-                    if (dy.absoluteValue > dx.absoluteValue) {
-                        val label = directionLabels[if (dy < 0) InputDirection.UP.ordinal else InputDirection.DOWN.ordinal]
-                        if (label != null)
-                        {
-                            onInput(label)
-                        }
-                    }
-                    else {
-                        val label = directionLabels[if (dx < 0) InputDirection.LEFT.ordinal else InputDirection.RIGHT.ordinal]
-                        if (label != null)
-                        {
-                            onInput(label)
-                        }
-                    }
+                    // Release isn't that helpful
+                    //performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY_RELEASE);
+                    onInput(label)
                 }
-                else {
-                    directionLabels[InputDirection.NONE.ordinal]?.apply(onInput)
+            }
+            MotionEvent.ACTION_MOVE -> {
+                val inputDirection = getInputDirection(event)
+                if (unconfirmedInputDirection != InputDirection.NONE && inputDirection == InputDirection.NONE){
+                    unconfirmedInputDirection = inputDirection
+                    performHapticFeedback(HapticFeedbackConstants.GESTURE_THRESHOLD_DEACTIVATE)
                 }
-
+                else if(inputDirection != unconfirmedInputDirection)
+                {
+                    performHapticFeedback(HapticFeedbackConstants.GESTURE_THRESHOLD_ACTIVATE)
+                }
+                unconfirmedInputDirection = inputDirection
             }
         }
         // TODO: return true if in actionable zone
