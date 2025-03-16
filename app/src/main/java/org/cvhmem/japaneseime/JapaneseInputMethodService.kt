@@ -215,8 +215,16 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
                 currentInputConnection.commitText(composingText, 1)
                 composingText.clear()
             }
-            findViewById<Button>(R.id.button_delete).setOnClickListener{
-                currentInputConnection.deleteSurroundingText(1, 0)
+            findViewById<Button>(R.id.button_delete).setOnClickListener {
+                if (composingText.isEmpty())
+                {
+                    currentInputConnection.deleteSurroundingText(1, 0)
+                }
+                else
+                {
+                    composingText.deleteCharAt(composingText.chars().count().toInt() - 1)
+                    currentInputConnection.setComposingText(composingText, 1)
+                }
             }
 
         }
