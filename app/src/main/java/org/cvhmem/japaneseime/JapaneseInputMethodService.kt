@@ -22,6 +22,7 @@ import android.inputmethodservice.InputMethodService
 import android.view.View
 import android.view.inputmethod.CursorAnchorInfo
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputConnection
 import android.widget.Button
 
 class JapaneseInputMethodService public constructor() : InputMethodService()
@@ -29,6 +30,8 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
     private val composingText: StringBuilder = StringBuilder();
     private var anchorInfo: CursorAnchorInfo? = null;
     private val kanaConverter = KanaConverter()
+
+
 
     private fun resetState()
     {
@@ -38,8 +41,33 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
 
 
     override fun onUpdateCursorAnchorInfo(cursorAnchorInfo: CursorAnchorInfo?) {
-        // TODO: never hit
+        if (cursorAnchorInfo != null)
+        {
+            if (
+                cursorAnchorInfo.composingText != null && (
+                    cursorAnchorInfo.selectionStart != cursorAnchorInfo.composingTextStart + cursorAnchorInfo.composingText.length ||
+                    cursorAnchorInfo.selectionEnd != cursorAnchorInfo.composingTextStart + cursorAnchorInfo.composingText.length
+                )
+            )
+            {
+                /*
+                 * Any "clicking around" cancels the current composing text. This is rather
+                 * restrictive. However, it is done this way currently as it seems impossible to
+                 * update the current composing text without jumping the cursor to / before the
+                 * start of the composing text or at / after the end. So if the user wanted to add a
+                 * ten to a kana somewhere in the middle of the composing text, there would be no
+                 * way to do this without making the cursor jump.
+                 *
+                 * Thus, edits without committing are only allowed at the end of the composing text.
+                 *
+                 * If this seems incorrect, please feel free to make a PR and justify your changes.
+                 */
+                this.currentInputConnection.finishComposingText();
+                this.composingText.clear();
+            }
+        }
         anchorInfo = cursorAnchorInfo;
+
     }
 
     override fun onFinishInput() {
@@ -47,6 +75,7 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
     }
 
     override fun onStartInput(attribute: EditorInfo?, restarting: Boolean) {
+        currentInputConnection.requestCursorUpdates(InputConnection.CURSOR_UPDATE_IMMEDIATE or InputConnection.CURSOR_UPDATE_MONITOR)
         resetState()
     }
 
