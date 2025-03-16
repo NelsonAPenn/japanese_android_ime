@@ -13,11 +13,15 @@ Features and considerations:
 
 This project was created because the Mozc Android IME is no longer maintained. Custom Android ROMs, past a certain Android version, have no options for Japanese input.
 
+For a high-level description of where to look for what aspects of the application, check out the [Project Organization page](/project_organization.md).
+
 ## Current features
 
 ### 12-key input
 
-This works and can be used to input kana, albeit with some shortcomings.
+This works today and can be used to input kana, albeit with some shortcomings.
+
+The core swiping behavior is implemented, complete with haptic feedback.
 
 ![Screenshot of 12-key layout](/12_key.png)
 
@@ -27,6 +31,8 @@ Known issues:
 - The handling of uncommitted text needs thorough revision. I remember this
   being imperfect in mozc-android as well.
 - Background is still transparent, making for text overlapping possible.
+- Hankaku / zenkaku options work, but don't feel the most natural in practice.
+    - I wanted to avoid an "everything button," instead opting for more explicit decision between adding a ten and adding a maru, for example. I do still believe there is value in this, but I think the design could still be improved.
 - Archaic characters still present as a way of entertaining myself, these should
   be removed as they will be useless to normal users.
 
