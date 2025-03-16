@@ -34,9 +34,10 @@ Known issues:
 
 1. 12-key input
 2. Conversion to kanji using free data sources.
-3. Radical input
-4. Romaji input
-5. Non-essentials (emoji, etc.)
+3. Submission to F-droid.
+4. Radical input
+5. Romaji input
+6. Non-essentials (emoji, etc.)
 
 In order to provide an extremely stable, functional product, **quashing bugs and unintended behavior will be heavily prioritized over new features**.
 
