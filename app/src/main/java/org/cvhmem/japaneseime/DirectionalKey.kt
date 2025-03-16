@@ -1,3 +1,21 @@
+/*
+ * Copyright 2024 Nelson Penn
+ *
+ * This file is part of Japanese Android IME.
+ *
+ * Japanese Android IME is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ *
+ * Japanese Android IME is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
+ */
 package org.cvhmem.japaneseime
 
 import android.content.Context
@@ -26,7 +44,8 @@ enum class InputDirection
 private const val ACTIVE_ZONE_MULTIPLIER = 1.5;
 
 /**
- * TODO: document your custom view class.
+ * A custom view implementing the core directional, swipe-activated key characteristic of 12-key
+ * keyboard layouts.
  */
 class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
