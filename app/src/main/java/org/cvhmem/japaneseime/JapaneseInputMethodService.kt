@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Nelson Penn
+ * Copyright 2024, 2025 Nelson Penn
  *
  * This file is part of Japanese Android IME.
  *
@@ -21,6 +21,7 @@ package org.cvhmem.japaneseime
 import android.inputmethodservice.InputMethodService
 import android.view.View
 import android.view.inputmethod.CursorAnchorInfo
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 
 class JapaneseInputMethodService public constructor() : InputMethodService()
@@ -29,9 +30,24 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
     private var anchorInfo: CursorAnchorInfo? = null;
     private val kanaConverter = KanaConverter()
 
+    private fun resetState()
+    {
+        this.composingText.clear();
+        this.anchorInfo = null;
+    }
+
+
     override fun onUpdateCursorAnchorInfo(cursorAnchorInfo: CursorAnchorInfo?) {
         // TODO: never hit
         anchorInfo = cursorAnchorInfo;
+    }
+
+    override fun onFinishInput() {
+        resetState()
+    }
+
+    override fun onStartInput(attribute: EditorInfo?, restarting: Boolean) {
+        resetState()
     }
 
     private fun onInput(value: String) {
