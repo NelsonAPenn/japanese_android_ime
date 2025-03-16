@@ -49,3 +49,12 @@ Known issues:
 In order to provide an extremely stable, functional product, **quashing bugs and unintended behavior will be heavily prioritized over new features**.
 
 
+## Installation
+
+Currently, this app must be built with Android studio into an APK and manually installed on the target device.
+
+In the future (once the core functionality is implemented), releases will be made to F-droid and likely the Play Store as well.
+
+## Contributing
+
+See [contributing guielines](/CONTRIBUTING.md).
