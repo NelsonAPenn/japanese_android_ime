@@ -26,7 +26,7 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         <attr name="centerTextSize" format="dimension" />
         <attr name="directionalTextSize" format="dimension" />
 
-        <attr name="exampleColor" format="color" />
-        <attr name="exampleDrawable" format="color|reference" />
+        <attr name="centerTextColor" format="color" />
+        <attr name="directionalTextColor" format="color" />
     </declare-styleable>
 </resources>

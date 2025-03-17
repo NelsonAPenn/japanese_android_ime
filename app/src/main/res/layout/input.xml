@@ -21,7 +21,9 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/JapaneseIMEForAndroid.InputView"
+    >
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_a"
@@ -37,7 +39,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_1"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_k"
@@ -53,7 +56,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_s"
@@ -69,7 +73,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_3"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_t"
@@ -85,7 +90,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_1"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_1"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_0"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_n"
@@ -101,7 +107,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_1"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_0"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_h"
@@ -117,7 +124,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_1"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_3"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_0" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_0"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_m"
@@ -133,7 +141,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_2"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_1"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_1"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_y"
@@ -147,7 +156,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_2"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_1"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_r"
@@ -163,7 +173,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_2"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_3"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_1" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_1"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_w"
@@ -178,7 +189,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/v_guideline_2"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_2"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_delete"
@@ -190,7 +202,8 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_3"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
 
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_confirm"
@@ -202,7 +215,9 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_3"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_2"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_hanzen"
         android:layout_width="77dp"
@@ -216,7 +231,9 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/v_guideline_1"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_0"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_2"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
+
     <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_punctuation"
         android:layout_width="77dp"
@@ -231,7 +248,9 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/v_guideline_3"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_2"
-        app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
+        app:layout_constraintTop_toTopOf="@+id/h_guideline_2"
+        style="@style/JapaneseIMEForAndroid.InputView"/>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/v_guideline_0"
         android:layout_width="wrap_content"

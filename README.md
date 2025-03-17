@@ -27,7 +27,7 @@ The core swiping behavior is implemented, complete with haptic feedback.
 
 Known issues:
 
-- Background is still transparent, making for text overlapping possible.
+- No katakana yet, as those will require implementation of suggestions
 - Hankaku / zenkaku options work, but don't feel the most natural in practice.
     - I wanted to avoid an "everything button," instead opting for more explicit decision between adding a ten and adding a maru, for example. I do still believe there is value in this, but I think the design could still be improved.
 

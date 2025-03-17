@@ -54,6 +54,8 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
     private var textWidth: Float = 0f
     private var centerTextHeight: Float = 0f
     private var directionalTextHeight: Float = 0f
+    private var centerTextColor: Int = Color.MAGENTA
+    private var directionalTextColor: Int = Color.MAGENTA
 
     private val directionLabels: Array<String?> = arrayOfNulls(5)
     private val directionVectors: Array<Pair<Int, Int>> = arrayOf(
@@ -84,13 +86,8 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
 
         centerTextSize = a.getDimension(R.styleable.DirectionalKey_centerTextSize, centerTextSize)
         directionalTextSize = a.getDimension(R.styleable.DirectionalKey_directionalTextSize, centerTextSize)
-
-        if (a.hasValue(R.styleable.DirectionalKey_exampleDrawable)) {
-            exampleDrawable = a.getDrawable(
-                R.styleable.DirectionalKey_exampleDrawable
-            )
-            exampleDrawable?.callback = this
-        }
+        centerTextColor = a.getColor(R.styleable.DirectionalKey_centerTextColor, centerTextColor)
+        directionalTextColor = a.getColor(R.styleable.DirectionalKey_directionalTextColor, directionalTextColor)
 
         a.recycle()
 
@@ -98,12 +95,12 @@ class DirectionalKey(context: Context, attrs: AttributeSet) : View(context, attr
         centerTextPaint = TextPaint().apply {
             flags = Paint.ANTI_ALIAS_FLAG
             textAlign = Paint.Align.CENTER
-            color = Color.WHITE
+            color = centerTextColor
         }
         directionalTextPaint = TextPaint().apply {
             flags = Paint.ANTI_ALIAS_FLAG
             textAlign = Paint.Align.CENTER
-            color = Color.GRAY
+            color = directionalTextColor
         }
 
         // Update TextPaint and text measurements from attributes

@@ -1,7 +1,8 @@
 <resources>
 
-    <style name="Widget.Theme.JapaneseIMEForAndroid.MyView" parent="">
-        <item name="android:background">@color/gray_400</item>
-        <item name="exampleColor">@color/light_blue_400</item>
+    <style name="JapaneseIMEForAndroid.InputView" parent="">
+        <item name="android:background">#eeeeee</item>
+        <item name="centerTextColor">@color/black</item>
+        <item name="directionalTextColor">#777777</item>
     </style>
 </resources>
