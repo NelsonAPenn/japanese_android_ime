@@ -27,14 +27,9 @@ The core swiping behavior is implemented, complete with haptic feedback.
 
 Known issues:
 
-- No extender character
-- The handling of uncommitted text needs thorough revision. I remember this
-  being imperfect in mozc-android as well.
 - Background is still transparent, making for text overlapping possible.
 - Hankaku / zenkaku options work, but don't feel the most natural in practice.
     - I wanted to avoid an "everything button," instead opting for more explicit decision between adding a ten and adding a maru, for example. I do still believe there is value in this, but I think the design could still be improved.
-- Archaic characters still present as a way of entertaining myself, these should
-  be removed as they will be useless to normal users.
 
 ## Roadmap
 
