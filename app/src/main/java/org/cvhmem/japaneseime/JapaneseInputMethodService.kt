@@ -211,11 +211,11 @@ class JapaneseInputMethodService public constructor() : InputMethodService()
                 }
 
             };
-            findViewById<Button>(R.id.button_confirm).setOnClickListener {
+            findViewById<DirectionalKey>(R.id.button_confirm).onInput = {
                 currentInputConnection.commitText(composingText, 1)
                 composingText.clear()
             }
-            findViewById<Button>(R.id.button_delete).setOnClickListener {
+            findViewById<DirectionalKey>(R.id.button_delete).onInput = {
                 if (composingText.isEmpty())
                 {
                     currentInputConnection.deleteSurroundingText(1, 0)

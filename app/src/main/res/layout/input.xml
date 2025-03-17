@@ -180,21 +180,25 @@ Japanese Android IME. If not, see <https://www.gnu.org/licenses/>.
         app:layout_constraintStart_toStartOf="@+id/v_guideline_1"
         app:layout_constraintTop_toTopOf="@+id/h_guideline_2" />
 
-    <Button
+    <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_delete"
-        android:layout_width="60dp"
+        android:layout_width="77dp"
         android:layout_height="77dp"
-        android:text="x"
+        app:centerTextSize="16dp"
+        app:directionalTextSize="8dp"
+        app:labelCenter="DEL"
         app:layout_constraintBottom_toTopOf="@+id/h_guideline_0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_3"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <org.cvhmem.japaneseime.DirectionalKey
         android:id="@+id/button_confirm"
-        android:layout_width="60dp"
+        android:layout_width="77dp"
         android:layout_height="77dp"
-        android:text="y"
+        app:centerTextSize="16dp"
+        app:directionalTextSize="8dp"
+        app:labelCenter="➜"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/v_guideline_3"
