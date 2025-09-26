@@ -1,5 +1,7 @@
 # Japanese Android IME
 
+**Note: this project is being archived and is no longer maintained. Not that anyone other than me was using this but use [Sumire](https://github.com/KazumaProject/JapaneseKeyboard) instead. It has all the features I wanted and they are actually complete.**
+
 A FOSS Japanese IME for Android.
 
 The goal of this project is to become the de-facto standard for Japanese input on custom Android ROMs (and be a competitive option on stock Android).
